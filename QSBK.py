@@ -2,6 +2,7 @@
 import urllib
 import urllib2
 import re
+import MySQLdb
 
 class QSBK(object):
 
@@ -60,4 +61,14 @@ class QSBK(object):
                 self.getOneStory(pageStoried,nowPage)
             else:
                 return
-
+    # def instertDB(self):
+    #     #插入数据到mysql数据库
+    #     conn = MySQLdb.connect('172.19.1.213','root','root','text')
+    #     cur = conn.cursor()
+    #     value = []
+    #     for li in self.getIem():
+    #         value.append(('li',li))
+    #     cur.executemany('insert into spider (name,id) value (%s,%s);',value)
+    #     conn.commit()
+a = QSBK()
+a.start()
