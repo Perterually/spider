@@ -61,5 +61,3 @@ class QSBK(object):
             else:
                 return
 
-a = QSBK()
-a.start()
