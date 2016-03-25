@@ -40,7 +40,6 @@ class QSBK(object):
             conn = MySQLdb.connect('172.19.1.213','root','root','text')
             cur = conn.cursor()
             cur.executemany('insert into spider (name,text) value (%s,%s);',qsbk)
-
             conn.commit()
             conn.close()
 a = QSBK()
