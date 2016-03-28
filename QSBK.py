@@ -39,15 +39,15 @@ class QSBK(object):
             if pageStories:
                 self.stories.append(pageStories)
                 self.pageIndex += 1
-
     def getOneStory(self,stories,page):
+        num = 0
         for story in stories:
             input = raw_input()
             self.loadPage()
             if input == 'q':
-                self.enable = False
-                return
-            print u"第%d条\t发布人:%s\n发布内容:%s" %(page,story[0],story[1])
+              self.enable = False
+            num += 1
+            print u"第%d页第%d条\t发布人:%s\n发布内容:%s" %(page,num,story[0],story[1])
     def start(self):
         print u"正在读取糗事百科,按回车查看新段子，Q退出"
         self.enable = True
@@ -61,5 +61,7 @@ class QSBK(object):
                 self.getOneStory(pageStoried,nowPage)
             else:
                 return
+
+
 a = QSBK()
 a.start()
