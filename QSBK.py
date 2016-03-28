@@ -45,7 +45,8 @@ class QSBK(object):
             input = raw_input()
             self.loadPage()
             if input == 'q':
-              self.enable = False
+                self.enable = False
+                return
             num += 1
             print u"第%d页第%d条\t发布人:%s\n发布内容:%s" %(page,num,story[0],story[1])
     def start(self):
