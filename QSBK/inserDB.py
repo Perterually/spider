@@ -42,5 +42,10 @@ class QSBK(object):
             cur.executemany('insert into spider (name,text) value (%s,%s);',qsbk)
             conn.commit()
             conn.close()
+    def manyNum(self,index):
+        for pageIndex in xrange(1,index):
+            self.instertDB(pageIndex)
+            print u"第%d页" % pageIndex
+        print u'插入%d页数据' % pageIndex
 a = QSBK()
-a.instertDB(1)
+a.manyNum(10)

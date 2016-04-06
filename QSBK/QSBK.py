@@ -33,6 +33,7 @@ class QSBK(object):
             text = re.sub(replaceBR,'\n',item[1])
             pageDate.append([item[0].strip(),text.strip()])
         return pageDate
+    #读取页面
     def loadPage(self):
         if self.enable == True:
             pageStories = self.getPageItems(self.pageIndex)
@@ -48,7 +49,7 @@ class QSBK(object):
                 self.enable = False
                 return
             num += 1
-            print u"第%d页第%d条\t发布人:%s\n发布内容:%s" %(page,num,story[0],story[1])
+            print u"第%d页第%d条\t发布人:%s\n发布内容:\n%s" %(page,num,story[0],story[1])
     def start(self):
         print u"正在读取糗事百科,按回车查看新段子，Q退出"
         self.enable = True
