@@ -35,6 +35,7 @@ class stock:
         item = self.getDate(pageIndex)
         conn = MySQLdb.connect('172.19.2.120', 'root', 'root', 'text')
         cure = conn.cursor()
+        print item
         cure.executemany('insert into stock (code,name,about) value (%s,%s,%s)', item)
         conn.commit()
         conn.close()

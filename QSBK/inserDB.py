@@ -41,6 +41,7 @@ class QSBK(object):
         # 插入数据到mysql数据库
         conn = MySQLdb.connect('172.19.2.120', 'root', 'root', 'text')
         cur = conn.cursor()
+        print qsbk
         cur.executemany('insert into spider (name,text) value (%s,%s)',qsbk)
         conn.commit()
         conn.close()
@@ -56,7 +57,7 @@ class QSBK(object):
 
     def manyNum(self, index):
         for pageIndex in xrange(1, index):
-            self.insertSqllite(pageIndex)
+            self.instertDB(pageIndex)
             print u"第%d页" % pageIndex
         print u'插入%d页数据' % pageIndex
 

@@ -63,6 +63,7 @@ class QSBK(object):
                 pageStoried = self.stories[0]
                 nowPage += 1
                 del self.stories[0]
+                print pageStoried
                 self.getOneStory(pageStoried, nowPage)
             else:
                 return

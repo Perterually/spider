@@ -1,25 +1,25 @@
-# -*- coding:utf-8 -*-
-import urllib2
-from pyquery import PyQuery as pq
+# # -*- coding:utf-8 -*-
+import chardet
+import json
 
-from bs4 import BeautifulSoup
-
-
-class Into:
-    def __init__(self):
-        self.url = 'http://mobile.gyb365.com/guarder/getDurgInstructions?productID=22718116-6368-FE10-E050-10AC02016A78&drugName=%E5%AE%89%E5%90%96%E5%95%B6%E6%B3%A8%E5%B0%84%E6%B6%B2'
-
-    def get_page(self, url):
-        reponse = urllib2.Request(url)
-        request = urllib2.urlopen(reponse)
-        return request.read()
-
-    def get_info(self):
-        source = self.get_page(self.url)
-        pagedate = BeautifulSoup(source, 'lxml')
-        tag = pagedate.find('ul',id='drugmanual')
-        for nav in tag('p'):
-            print nav.text
-
-i = Into()
-i.get_info()
+# from collections import OrderedDict
+# s =['名字','性别']
+# b= ['杰克','男']
+# c = dict(zip(s,b))
+# d = json.dumps(c,ensure_ascii=False)
+# import MySQLdb
+# import json
+#
+# conn = MySQLdb.connect('172.19.2.120','root','root','drug')
+# cur = conn.cursor()
+# cur.execute('select drugUse from  instru_use where id=1')
+# s = cur.fetchall()
+# # print s
+# for i in s:
+#     for b in i:
+#         ls = json.loads(b)
+# for s,key in ls.items():
+#     print type(s)
+#
+# conn.commit()
+# conn.close()
