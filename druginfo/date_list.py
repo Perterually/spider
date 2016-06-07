@@ -41,8 +41,9 @@ class DataJson():
         return list
 
 
-   #返回一个药品的厂家的所有id
-    def get_drug_id(self,jsondata):
+        # 返回一个药品的厂家的所有id
+
+    def get_drug_id(self, jsondata):
         list = []
         try:
             data = jsondata['data']
@@ -50,8 +51,7 @@ class DataJson():
             drugList = drugData['drugList']
             for prueinto in drugList:
                 list.append(
-                    [prueinto['productDrugID'],prueinto['showName']])
+                    [prueinto['productDrugID'], prueinto['showName']])
         except Exception, ex:
             print Exception, ':', ex
         return list
-

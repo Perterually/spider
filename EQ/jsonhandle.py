@@ -3,5 +3,5 @@ def myMap(func, iterable):
     for arg in iterable:
         yield func(arg)
 
-names = ["ana", "bob", "dogge"]
 
+names = ["ana", "bob", "dogge"]

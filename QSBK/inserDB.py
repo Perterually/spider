@@ -1,9 +1,11 @@
 # -*- coding:utf-8 -*-
 
-import urllib2
 import re
-import MySQLdb
 import sqlite3
+import urllib2
+
+import MySQLdb
+
 
 class QSBK(object):
     def __init__(self):
@@ -42,18 +44,18 @@ class QSBK(object):
         conn = MySQLdb.connect('172.19.2.120', 'root', 'root', 'text')
         cur = conn.cursor()
         print qsbk
-        cur.executemany('insert into spider (name,text) value (%s,%s)',qsbk)
+        cur.executemany('insert into spider (name,text) value (%s,%s)', qsbk)
         conn.commit()
         conn.close()
-    #存入sqlite
-    def insertSqllite(self,pageIndex):
+
+    # 存入sqlite
+    def insertSqllite(self, pageIndex):
         qsbk = self.getPageItems(pageIndex)
         conn = sqlite3.connect('db.sqlite')
         cur = conn.cursor()
         cur.executemany('insert into spider (name,text) values (?,?);', qsbk)
         conn.commit()
         conn.close()
-
 
     def manyNum(self, index):
         for pageIndex in xrange(1, index):

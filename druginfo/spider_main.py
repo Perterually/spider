@@ -1,5 +1,6 @@
 # -*- coding:utf-8 -*-
 import random
+
 from time import sleep
 
 import data_save

@@ -34,6 +34,7 @@ class demo:
         for s in tag.find_all('li'):
             list.append(s.get_text())
         print list
+
     def get_drup_detail(self, productId, drugName):
         url = self.drug_use_url + self.productID + productId + self.drugName + drugName
         print url

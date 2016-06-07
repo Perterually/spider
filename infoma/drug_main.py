@@ -1,7 +1,8 @@
 # -*- coding:utf-8 -*-
 import json
-import time
 import urllib2
+
+import time
 
 import prue_info
 
@@ -29,8 +30,6 @@ class Drug:
             else:
                 print durglist
 
-
-
     def get_name_id(self, data):
         data_data = data['data']
         drugList = data_data['drugList']
@@ -53,7 +52,6 @@ class Drug:
 
 
             # 最大页数608
-
 
 
 d = Drug()

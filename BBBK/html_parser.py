@@ -1,8 +1,10 @@
 # -*- coding:utf-8 -*-
-from bs4 import BeautifulSoup
 import re
 import urlparse
+
+from bs4 import BeautifulSoup
 from pyquery import PyQuery as pq
+
 
 class HtmlParser():
     pass

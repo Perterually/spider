@@ -10,8 +10,8 @@ class Detail:
         try:
             for s in tag.find_all('span'):
                 list.append(s.string.encode('utf-8'))
-        except Exception,ex:
-            print Exception,':',ex
+        except Exception, ex:
+            print Exception, ':', ex
         return list
 
     def get_guide_li(self, content):
@@ -21,8 +21,8 @@ class Detail:
         try:
             for s in tag.find_all('ol'):
                 list.append(s.get_text().encode('utf-8'))
-        except Exception,ex:
-            print Exception,':',ex
+        except Exception, ex:
+            print Exception, ':', ex
         return list
 
     # 返回名称
@@ -84,7 +84,6 @@ class Detail:
         except Exception, ex:
             print Exception, ':', ex
 
-
     def get_drug_use_dict(self, content):
         span = self.get_guide_span(content)
         p = self.get_guide_li(content)
@@ -93,4 +92,3 @@ class Detail:
             return s
         except Exception, ex:
             print Exception, ':', ex
-

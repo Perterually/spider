@@ -1,8 +1,8 @@
 # -*- coding:utf-8 -*-
 import json
-import sys
 import urllib2
 
+import sys
 from bs4 import BeautifulSoup
 
 reload(sys)
@@ -30,7 +30,7 @@ class DrugList():
             contenty = json.loads(content)
             durglist = contenty['data']
             if int(durglist['stateCode']) == 200 and durglist['drugList'] == []:
-                print '数据收集完成,出现没有药品详细的id是',self.errorid
+                print '数据收集完成,出现没有药品详细的id是', self.errorid
                 return
             else:
                 return contenty
@@ -50,15 +50,15 @@ class DrugList():
             return read_json
 
     # 获取使用说明和指导的页面
-    def get_drup_detail(self, productId,drugName):
+    def get_drup_detail(self, productId, drugName):
         url = self.drug_use_url + self.productID + productId + self.drugName + drugName
         print url
         request = urllib2.Request(url)
         try:
             reponse = urllib2.urlopen(request)
             return reponse.read()
-        except Exception,ex:
-            print Exception,ex
+        except Exception, ex:
+            print Exception, ex
 
     # 返回errorid
     def get_errorid(self):
@@ -73,6 +73,7 @@ class DrugList():
         for d in drugList:
             # d['productDrugID'], d['showName']
             return self.get_drup_detail(d['productDrugID'], d['showName'])
+
     # 返回名称
     def get_span(self):
         list = []

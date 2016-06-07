@@ -1,12 +1,14 @@
 # -*- coding:utf-8 -*-
 import json
 import urllib2
+
 import MySQLdb
 from bs4 import BeautifulSoup
 
+
 class Into:
     def __init__(self):
-        self.url = 'http://mobile.gyb365.com/guarder/getDurgInstructions?productID=22718116-6368-FE10-E050-10AC02016A78&drugName'
+        self.url = 'http://mobile.gyb365.com/guarder/getDurgInstructions?productID=4c1e09fb-90c5-4925-a28a-970eb2cc4b24'
         self.productID = 'productID='
         self.drugName = '&drugName='
         self.prud = []
@@ -49,8 +51,8 @@ class Into:
             for s in tag.find_all('span'):
                 list.append(s.string.encode('utf-8'))
             return list
-        except Exception,ex:
-            print Exception,':',ex
+        except Exception, ex:
+            print Exception, ':', ex
 
     # 返回信息
     def get_p(self):
@@ -62,9 +64,8 @@ class Into:
             for s in tag.find_all('p'):
                 list.append(s.get_text().encode('utf-8'))
             return list
-        except Exception,ex:
-            print Exception,':',ex
-
+        except Exception, ex:
+            print Exception, ':', ex
 
     # 返回说明书的list
     def get_drug_use(self):
@@ -72,7 +73,7 @@ class Into:
         span = self.get_span()
         p = self.get_p()
         for row in range(len(span)):
-            list.append([span[row]+ ':' +p[row]])
+            list.append([span[row] + ':' + p[row]])
         return list
 
     # 返回指导的list
@@ -90,9 +91,8 @@ class Into:
         try:
             s = dict(zip(span, p))
             return s
-        except Exception,ex:
-            print Exception,':',ex
-
+        except Exception, ex:
+            print Exception, ':', ex
 
     def text1(self):
         list = {}
@@ -103,14 +103,14 @@ class Into:
 
     def insert(self):
         item = self.text()
-        df = json.dumps(item,ensure_ascii=False)
+        df = json.dumps(item, ensure_ascii=False)
         print df
-        conn = MySQLdb.connect(host='172.19.2.120', user='root', passwd='root', db='drug',charset='utf8')
-        cur = conn.cursor()
-        cur.execute('INSERT INTO demo(drugUse)VALUES(%s);',[df])
-        conn.commit()
-        conn.close()
-        print '保存使用说明成功'
+        # conn = MySQLdb.connect(host='172.19.2.120', user='root', passwd='root', db='drug',charset='utf8')
+        # cur = conn.cursor()
+        # cur.execute('INSERT INTO demo(drugUse)VALUES(%s);',[df])
+        # conn.commit()
+        # conn.close()
+        # print '保存使用说明成功'
 
 
 info = Into()

@@ -1,7 +1,9 @@
 # -*- coding:utf-8 -*-
-from pyquery import PyQuery as pq
-import MySQLdb
 import urllib2
+
+import MySQLdb
+from pyquery import PyQuery as pq
+
 
 class stock:
     def __init__(self):

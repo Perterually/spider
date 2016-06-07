@@ -29,7 +29,7 @@ class Date():
     def save_use(self, drugId, productDrugID, Introitem):
         if Introitem is None:
             return
-        dp = json.dumps(Introitem,ensure_ascii=False)
+        dp = json.dumps(Introitem, ensure_ascii=False)
         conn = MySQLdb.connect('172.19.2.120', 'root', 'root', 'drug')
         cur = conn.cursor()
         print drugId, productDrugID
@@ -43,7 +43,7 @@ class Date():
     def save_use_guide(self, drugId, productDrugID, guideitem, ):
         if guideitem is None:
             return
-        dp = json.dumps(guideitem,ensure_ascii=False)
+        dp = json.dumps(guideitem, ensure_ascii=False)
         conn = MySQLdb.connect('172.19.2.120', 'root', 'root', 'drug')
         cur = conn.cursor()
         cur.execute('INSERT INTO `drug_guide` (drugId,productDrugID,useGuide) VALUES (%s,%s,%s);',

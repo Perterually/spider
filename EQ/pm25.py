@@ -41,6 +41,7 @@ class PM():
         # pattern = re.compile('<div class="city_name">.*?<h2>(.*?)</h2>')
         # item = re.findall(pattern, source)
         # print item
+
     # 获取所有城市的数据
     def getAllDate(self, cityList):
         data = self.getCityDate(cityList)
