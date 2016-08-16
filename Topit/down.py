@@ -3,6 +3,7 @@
 from urllib.parse import urlencode
 
 import requests
+from bs4 import BeautifulSoup
 
 from Topit.seting import *
 
@@ -15,7 +16,7 @@ class TopIt():
         self.session.headers.update(Head)
 
     @staticmethod
-    def index_url(self, index):
+    def index_url(index):
         url = 'http://www.topit.me/'
         param = {
             'p': index
@@ -29,7 +30,17 @@ class TopIt():
         re = self.session.get(url, headers=Heads)
         return re.content.decode('utf-8')
 
+    # 返回一页的链接
+    def get_item_url(self, index):
+        li = []
+        date = self.get_page(index)
+        bs = BeautifulSoup(date, 'lxml')
+        for tag in bs.find_all('div', class_='catalog'):
+            for link in tag.find_all('a',target='_blank'):
+                url = link.get('href')
+                li.append(url)
+        return li
 
 t = TopIt()
-s = t.index_url(1)
+s = t.get_item_url(1)
 print(s)
