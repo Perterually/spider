@@ -3,7 +3,7 @@
 from urllib.parse import urlencode
 import requests
 from bs4 import BeautifulSoup
-
+import os
 from Topit.seting import *
 
 
@@ -61,6 +61,13 @@ class TopIt():
             f.write(date)
             f.close()
 
+    #创建图片文件夹
+    def mkdir(self,name):
+        path = str(name)
+        if not path:
+            os.mkdir(path)
+        else:
+            print("已经存在")
 
 t = TopIt()
 t.save_jpg('http://f5.topitme.com/5/c6/e0/115505073916be0c65o.jpg','demo.jpg')
