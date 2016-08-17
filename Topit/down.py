@@ -1,7 +1,6 @@
 # -*- coding:utf-8 -*-
 # py3
 from urllib.parse import urlencode
-
 import requests
 from bs4 import BeautifulSoup
 
@@ -54,8 +53,15 @@ class TopIt():
             for a in tag.find_all('a'):
                 link = a.get('href')
                 return link
+    #保存图片
+    def save_jpg(self,url,name):
+        rs =  requests.get(url)
+        date = rs.content
+        with open(name,'wb') as f:
+            f.write(date)
+            f.close()
 
 
 t = TopIt()
-s = t.get_jpg_url('http://www.topit.me/item/18435592')
-print(s)
+t.save_jpg('http://f5.topitme.com/5/c6/e0/115505073916be0c65o.jpg','demo.jpg')
+
