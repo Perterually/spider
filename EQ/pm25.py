@@ -37,7 +37,7 @@ class PM():
     # 获取一个城市的环境数据
     def getCityDate(self, site):
         source = self.getPageDate(site)
-        print source
+        print source.decode("utf-8")
         # pattern = re.compile('<div class="city_name">.*?<h2>(.*?)</h2>')
         # item = re.findall(pattern, source)
         # print item
