@@ -48,5 +48,3 @@ class PM():
 
 
 pm = PM()
-s = pm.getCity()
-print(s)
