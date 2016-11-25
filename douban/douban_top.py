@@ -32,7 +32,7 @@ class Douban():
                 about = tag.find('span', 'inq').get_text()
                 item.append([name, star, about])
             except Exception, ex:
-                print Exception, ":", ex
+                print(Exception, ":", ex)
         return item
 
     # 插入数据库
