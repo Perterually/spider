@@ -1,7 +1,6 @@
 # -*- coding:utf-8 -*-
 import sqlite3
 from urllib.parse import urlencode
-import sys
 import pymysql
 import requests
 from pyquery import PyQuery as pq
