@@ -37,7 +37,9 @@ class Excel():
             self.ws.append(data)
         self.conn.commit()
         self.conn.close()
-        self.wb.save('info_2_1.xlsx')
+        self.wb.save('江苏省.xlsx')
+        print("Done")
+       
     
 s = Excel()
 s.start()

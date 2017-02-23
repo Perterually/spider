@@ -5,7 +5,7 @@ import sys
 import pymysql
 import requests
 from pyquery import PyQuery as pq
-
+import os
 
 class Info:
     def __init__(self):
@@ -16,8 +16,8 @@ class Info:
         }
         self.session = requests.Session()
         self.session.headers.update(self.header)
-        self.url = 'http://116.252.221.174/guawang_sys/index_gw.asp?guawangid=FCK11122420140610t '
-        self.urls = 'http://116.252.221.174/guawang_sys/guawang_tables.asp?guawangid=FCK11122420140610t '
+        self.url = 'http://116.252.221.174/guawang_sys/index_gw.asp?guawangid=FCK14555320150703t '
+        self.urls = 'http://116.252.221.174/guawang_sys/guawang_tables.asp?guawangid=FCK14555320150703t '
         self.urlss = 'http://116.252.221.174/guawang_sys/guawang_tables.asp?'
         self.li = []
 
@@ -29,7 +29,7 @@ class Info:
             'search_3': '',
             'search_4': '',
             'pq': '',
-            'guawangid': 'FCK11122420140610t '
+            'guawangid': 'FCK14555320150703t '
         }
         return self.urlss + urlencode(param)
 
@@ -37,7 +37,6 @@ class Info:
         li = []
         self.session.get(self.url)
         rs = self.session.get(self.get_url(index))
-        print(self.get_url(index))
         content = rs.content.decode('gbk')
         try:
             source = pq(content)
@@ -54,9 +53,9 @@ class Info:
                 groupitemname = pq(data).find('td').eq(9).text()
                 speci = pq(data).find('td').eq(10).text()
                 model = pq(data).find('td').eq(11).text()
-                # perforcompo = pq(data).find('td').eq(12).text()
-                # packspeci = pq(data).find('td').eq(13).text()
-                # packmatel = pq(data).find('td').eq(14).text()
+                perforcompo = pq(data).find('td').eq(12).text()
+                packspeci = pq(data).find('td').eq(13).text()
+                packmatel = pq(data).find('td').eq(14).text()
                 # brand = pq(data).find('td').eq(15).text()
                 # unit = pq(data).find('td').eq(16).text()
                 # winbidprice = pq(data).find('td').eq(17).text()
@@ -64,7 +63,7 @@ class Info:
                 # a = pq(data).find('td').eq(19).text()
                 li.append([
                     catenname, packname, producpackleve, producpacknum, groupsetid, groupitemid, producompany,
-                    bidcomany, groupsetname, groupitemname, speci, model,])
+                    bidcomany, groupsetname, groupitemname, speci, model, perforcompo, packspeci, packmatel])
             return li
         except Exception:
             print(Exception)
@@ -97,21 +96,23 @@ class Info:
         conn = sqlite3.connect('drug.db')
         cure = conn.cursor()
         cure.executemany(
-            'INSERT INTO info(catenname, packname, producpackleve, producpacknum, groupsetid, groupitemid, producompany,bidcomany, groupsetname, groupitemname, speci, model) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)',
+            'INSERT INTO info(catenname, packname, producpackleve, producpacknum, groupsetid, groupitemid, producompany,bidcomany, groupsetname, groupitemname, speci, model, perforcompo, packspeci, packmatel) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
             items)
         conn.commit()
         conn.close()
 
+    
+    def check_db(self):
+        pass
+
     def Start(self):
-        for i in range(1, 100):
+        
+        for i in range(1, 13):
             data = self.get_data(i)
             detail = self.listprocess(data)
-            if detail == None:
-                # self.li.append(i)
+            print(detail)
             # self.save_sqlite(detail)
-                print(detail)
-            print(i)             
-
+            # print(i)
 
 i = Info()
-i.create_db()
+i.Start()
